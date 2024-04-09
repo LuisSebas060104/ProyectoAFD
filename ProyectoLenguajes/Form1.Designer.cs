@@ -30,14 +30,14 @@
         {
             this.BtnAbrir = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnAbrir
             // 
-            this.BtnAbrir.Location = new System.Drawing.Point(93, 98);
-            this.BtnAbrir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAbrir.Location = new System.Drawing.Point(70, 80);
             this.BtnAbrir.Name = "BtnAbrir";
-            this.BtnAbrir.Size = new System.Drawing.Size(100, 28);
+            this.BtnAbrir.Size = new System.Drawing.Size(75, 23);
             this.BtnAbrir.TabIndex = 0;
             this.BtnAbrir.Text = "Abrir archivo";
             this.BtnAbrir.UseVisualStyleBackColor = true;
@@ -45,22 +45,32 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(429, 107);
+            this.button1.Location = new System.Drawing.Point(322, 87);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(262, 99);
+            this.button1.Size = new System.Drawing.Size(196, 80);
             this.button1.TabIndex = 1;
             this.button1.Text = "Comprobar cadena";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(309, 204);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(229, 102);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Abrir archivo";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnAbrir);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -71,6 +81,7 @@
 
         private System.Windows.Forms.Button BtnAbrir;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
