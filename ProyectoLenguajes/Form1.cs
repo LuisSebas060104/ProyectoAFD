@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -84,7 +86,7 @@ namespace ProyectoLenguajes
                 }
             }
         }
-         
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -95,6 +97,49 @@ namespace ProyectoLenguajes
         {
 
         }
+
+        private void BtnValidarCadena_Click(object sender, EventArgs e)
+        {
+            if (numeroEstados == 0)
+            {
+                MessageBox.Show("Primero carga un autómata antes de validar una cadena.");
+                return;
+            }
+
+            string cadena = Txtcadena.Text.Trim();
+            if (string.IsNullOrEmpty(cadena))
+            {
+                MessageBox.Show("Ingresa una cadena para validar.");
+                return;
+            }
+
+            if (ValidarCadena(cadena))
+            {
+                MessageBox.Show("La cadena es válida para el autómata.");
+            }
+            else
+            {
+                MessageBox.Show("La cadena NO es válida para el autómata.");
+            }
+        }
+
+        private bool ValidarCadena(string cadena)
+        {
+            int estadoActual = estadoInicial;
+
+            foreach (char simbolo in cadena)
+            {
+                if (!transiciones.TryGetValue(new Tuple<int, char>(estadoActual, simbolo), out int estadoSiguiente))
+                {
+                    return false; // No existe transición para el símbolo en el estado actual
+                }
+                estadoActual = estadoSiguiente;
+            }
+
+            return estadosFinales.Contains(estadoActual); // Verifica si el estado actual es final
+        }
+
     }
-    }
+}
+  
 

@@ -32,8 +32,8 @@
             this.RchMostrar = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.TxtCadena = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Txtcadena = new System.Windows.Forms.TextBox();
+            this.BtnValidarCadena = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnAbrir
@@ -75,29 +75,30 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Ingrese una cadena";
             // 
-            // TxtCadena
+            // Txtcadena
             // 
-            this.TxtCadena.Location = new System.Drawing.Point(401, 92);
-            this.TxtCadena.Name = "TxtCadena";
-            this.TxtCadena.Size = new System.Drawing.Size(264, 20);
-            this.TxtCadena.TabIndex = 4;
+            this.Txtcadena.Location = new System.Drawing.Point(401, 95);
+            this.Txtcadena.Name = "Txtcadena";
+            this.Txtcadena.Size = new System.Drawing.Size(264, 20);
+            this.Txtcadena.TabIndex = 4;
             // 
-            // button1
+            // BtnValidarCadena
             // 
-            this.button1.Location = new System.Drawing.Point(449, 155);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnValidarCadena.Location = new System.Drawing.Point(401, 153);
+            this.BtnValidarCadena.Name = "BtnValidarCadena";
+            this.BtnValidarCadena.Size = new System.Drawing.Size(111, 23);
+            this.BtnValidarCadena.TabIndex = 5;
+            this.BtnValidarCadena.Text = "Validar cadena";
+            this.BtnValidarCadena.UseVisualStyleBackColor = true;
+            this.BtnValidarCadena.Click += new System.EventHandler(this.BtnValidarCadena_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.TxtCadena);
+            this.Controls.Add(this.BtnValidarCadena);
+            this.Controls.Add(this.Txtcadena);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RchMostrar);
@@ -116,8 +117,8 @@
         private System.Windows.Forms.RichTextBox RchMostrar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TxtCadena;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox Txtcadena;
+        private System.Windows.Forms.Button BtnValidarCadena;
     }
 }
 
