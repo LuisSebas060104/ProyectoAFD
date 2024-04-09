@@ -38,6 +38,7 @@ namespace ProyectoLenguajes
                     // Lee el contenido del archivo
                     string content = File.ReadAllText(filePath);
 
+                    RchMostrar.Text = content;
                     
                 }
             }
@@ -56,6 +57,11 @@ namespace ProyectoLenguajes
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

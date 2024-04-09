@@ -8,3 +8,14 @@ C:\Users\usuario\Source\Repos\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLe
 C:\Users\usuario\Source\Repos\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.CoreCompileInputs.cache
 C:\Users\usuario\Source\Repos\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.exe
 C:\Users\usuario\Source\Repos\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.pdb
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.exe.config
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.exe
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.pdb
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.AssemblyReference.cache
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.SuggestedBindingRedirects.cache
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Form1.resources
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Properties.Resources.resources
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.GenerateResource.cache
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.CoreCompileInputs.cache
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.exe
+D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.pdb
