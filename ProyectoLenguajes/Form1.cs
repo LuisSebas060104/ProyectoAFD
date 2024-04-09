@@ -13,6 +13,12 @@ namespace ProyectoLenguajes
 {
     public partial class Form1 : Form
     {
+        // Variables para almacenar la definición del autómata
+        private int numeroEstados;
+        private int estadoInicial;
+        private HashSet<int> estadosFinales;
+        private Dictionary<Tuple<int, char>, int> transiciones;
+
         public Form1()
         {
             InitializeComponent();
@@ -38,8 +44,10 @@ namespace ProyectoLenguajes
                     // Lee el contenido del archivo
                     string content = File.ReadAllText(filePath);
 
-                    RchMostrar.Text = content;
-                    
+                    CargarAutomataDesdeArchivo(filePath);
+
+                    MessageBox.Show("Autómata cargado exitosamente.");
+
                 }
             }
             catch (IOException ex)
@@ -55,6 +63,28 @@ namespace ProyectoLenguajes
                 MessageBox.Show("Error inesperado: " + ex.Message);
             }
         }
+
+        private void CargarAutomataDesdeArchivo(string filePath)
+        {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                numeroEstados = int.Parse(reader.ReadLine());
+                estadoInicial = int.Parse(reader.ReadLine());
+                estadosFinales = new HashSet<int>(reader.ReadLine().Split(',').Select(int.Parse));
+                transiciones = new Dictionary<Tuple<int, char>, int>();
+
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(',');
+                    int estadoActual = int.Parse(parts[0]);
+                    char simbolo = parts[1][0];
+                    int estadoSiguiente = int.Parse(parts[2]);
+                    transiciones[new Tuple<int, char>(estadoActual, simbolo)] = estadoSiguiente;
+                }
+            }
+        }
+         
 
         private void button1_Click(object sender, EventArgs e)
         {
