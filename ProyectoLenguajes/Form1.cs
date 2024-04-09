@@ -54,6 +54,11 @@ namespace ProyectoLenguajes
                 MessageBox.Show("Error inesperado: " + ex.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 
