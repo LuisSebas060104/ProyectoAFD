@@ -65,7 +65,7 @@ namespace ProyectoLenguajes
                 MessageBox.Show("Error inesperado: " + ex.Message);
             }
         }
-
+        
         public void CargarAutomataDesdeArchivo(string filePath)
         {
             using (StreamReader reader = new StreamReader(filePath))
@@ -86,6 +86,7 @@ namespace ProyectoLenguajes
                 }
             }
         }
+        /*
             private void CargarAutomataFormatoNumeros(StreamReader reader)
         {
             estadoInicial = reader.ReadLine();
@@ -122,7 +123,7 @@ namespace ProyectoLenguajes
             }
         }
 
-
+        */
         private void button1_Click(object sender, EventArgs e)
         {
 
