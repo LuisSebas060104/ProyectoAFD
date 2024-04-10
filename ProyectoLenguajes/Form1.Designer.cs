@@ -36,6 +36,7 @@
             this.BtnValidarCadena = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.RchTransicion = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,12 +111,21 @@
             // 
             this.panel1.BackgroundImage = global::ProyectoLenguajes.Properties.Resources.clouds_gradient_minimalist_desktop_wallpaper_preview;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.RchTransicion);
             this.panel1.Controls.Add(this.BtnValidarCadena);
             this.panel1.Location = new System.Drawing.Point(2, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(782, 448);
             this.panel1.TabIndex = 7;
+            // 
+            // RchTransicion
+            // 
+            this.RchTransicion.Location = new System.Drawing.Point(398, 162);
+            this.RchTransicion.Name = "RchTransicion";
+            this.RchTransicion.Size = new System.Drawing.Size(252, 240);
+            this.RchTransicion.TabIndex = 6;
+            this.RchTransicion.Text = "";
             // 
             // Form1
             // 
@@ -149,6 +159,7 @@
         private System.Windows.Forms.Button BtnValidarCadena;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RichTextBox RchTransicion;
     }
 }
 
