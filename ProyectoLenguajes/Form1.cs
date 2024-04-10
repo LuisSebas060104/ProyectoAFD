@@ -102,6 +102,11 @@ namespace ProyectoLenguajes
 
         private void BtnValidarCadena_Click(object sender, EventArgs e)
         {
+
+
+           
+
+
             if (numeroEstados == 0)
             {
                 MessageBox.Show("Primero carga un autómata antes de validar una cadena.");
@@ -114,6 +119,8 @@ namespace ProyectoLenguajes
                 MessageBox.Show("Ingresa una cadena para validar.");
                 return;
             }
+
+            
 
             List<string> transicionesRealizadas = new List<string>();
 
@@ -130,9 +137,20 @@ namespace ProyectoLenguajes
             
         }
 
+        private static string TrimString(string cadena)
+        {
+            // Reemplazar todos los espacios en blanco por una cadena vacía.
+            return cadena.Replace(" ", string.Empty);
+        }
+
 
         public bool ValidarCadena(string cadena, List<string> transicionesRealizadas)
         {
+
+            // Eliminar los espacios de la cadena antes de validarla.
+            cadena = TrimString(Txtcadena.Text);
+
+
             string estadoActual = estadoInicial;
             transicionesRealizadas.Clear();
 
