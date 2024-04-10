@@ -177,7 +177,7 @@ namespace ProyectoLenguajes
             {
                 if (!transiciones.TryGetValue(new Tuple<string, char>(estadoActual, simbolo), out string estadoSiguiente))
                 {
-                    return false; // No existe transición para el símbolo en el estado actual
+                    return false; 
                 }
                 transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
                 estadoActual = estadoSiguiente;
