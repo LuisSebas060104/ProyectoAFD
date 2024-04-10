@@ -17,9 +17,9 @@ namespace ProyectoLenguajes
     {
         // Variables para almacenar la definición del autómata
         private int numeroEstados;
-        private int estadoInicial;
-        private HashSet<int> estadosFinales;
-        private Dictionary<Tuple<int, char>, int> transiciones;
+        private string estadoInicial;
+        private HashSet<string> estadosFinales;
+        private Dictionary<Tuple<string, char>, string> transiciones;
 
         public Form1()
         {
@@ -47,7 +47,7 @@ namespace ProyectoLenguajes
                     string content = File.ReadAllText(filePath);
 
                     CargarAutomataDesdeArchivo(filePath);
-
+                    RchMostrar.Text = content;
                     MessageBox.Show("Autómata cargado exitosamente.");
 
                 }
@@ -66,24 +66,59 @@ namespace ProyectoLenguajes
             }
         }
 
-        private void CargarAutomataDesdeArchivo(string filePath)
+        public void CargarAutomataDesdeArchivo(string filePath)
         {
             using (StreamReader reader = new StreamReader(filePath))
             {
                 numeroEstados = int.Parse(reader.ReadLine());
-                estadoInicial = int.Parse(reader.ReadLine());
-                estadosFinales = new HashSet<int>(reader.ReadLine().Split(',').Select(int.Parse));
-                transiciones = new Dictionary<Tuple<int, char>, int>();
+                estadoInicial = reader.ReadLine();
+                estadosFinales = new HashSet<string>(reader.ReadLine().Split(',').Select(s => s.Trim()));
+                transiciones = new Dictionary<Tuple<string, char>, string>();
 
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] parts = line.Split(',');
-                    int estadoActual = int.Parse(parts[0]);
-                    char simbolo = parts[1][0];
-                    int estadoSiguiente = int.Parse(parts[2]);
-                    transiciones[new Tuple<int, char>(estadoActual, simbolo)] = estadoSiguiente;
+                    string estadoActual = parts[0].Trim();
+                    char simbolo = parts[1].Trim()[0];
+                    string estadoSiguiente = parts[2].Trim();
+                    transiciones[new Tuple<string, char>(estadoActual, simbolo)] = estadoSiguiente;
                 }
+            }
+        }
+            private void CargarAutomataFormatoNumeros(StreamReader reader)
+        {
+            estadoInicial = reader.ReadLine();
+            estadosFinales = new HashSet<string>(reader.ReadLine().Split(','));
+            transiciones = new Dictionary<Tuple<string, char>, string>();
+
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] parts = line.Split(',');
+                string estadoActual = parts[0];
+                char simbolo = parts[1][0];
+                string estadoSiguiente = parts[2];
+                transiciones[new Tuple<string, char>(estadoActual, simbolo)] = estadoSiguiente;
+            }
+        }
+
+        private void CargarAutomataFormatoCadenas(StreamReader reader)
+        {
+            estadoInicial = reader.ReadLine();
+            string estadoFinalLine = reader.ReadLine();
+            estadosFinales = new HashSet<string>(estadoFinalLine.Split(','));
+
+            transiciones = new Dictionary<Tuple<string, char>, string>();
+
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] parts = line.Split(',');
+                string estadoActual = parts[0];
+                char simbolo = parts[1][0];
+                string estadoSiguiente = parts[2];
+                transiciones[new Tuple<string, char>(estadoActual, simbolo)] = estadoSiguiente;
             }
         }
 
@@ -123,13 +158,14 @@ namespace ProyectoLenguajes
             }
         }
 
-        private bool ValidarCadena(string cadena)
+
+        public bool ValidarCadena(string cadena)
         {
-            int estadoActual = estadoInicial;
+            string estadoActual = estadoInicial;
 
             foreach (char simbolo in cadena)
             {
-                if (!transiciones.TryGetValue(new Tuple<int, char>(estadoActual, simbolo), out int estadoSiguiente))
+                if (!transiciones.TryGetValue(new Tuple<string, char>(estadoActual, simbolo), out string estadoSiguiente))
                 {
                     return false; // No existe transición para el símbolo en el estado actual
                 }
