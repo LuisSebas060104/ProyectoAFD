@@ -43,12 +43,15 @@ namespace ProyectoLenguajes
                     // Obtiene la ruta del archivo seleccionado por el usuario
                     string filePath = openFileDialog.FileName;
 
+                    
                     // Lee el contenido del archivo
                     string content = File.ReadAllText(filePath);
 
                     CargarAutomataDesdeArchivo(filePath);
                     RchMostrar.Text = content;
                     MessageBox.Show("Autómata cargado exitosamente.");
+                    Txtcadena.Text = "";
+
 
                 }
             }
