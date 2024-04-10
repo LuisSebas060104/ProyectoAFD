@@ -89,44 +89,7 @@ namespace ProyectoLenguajes
                 }
             }
         }
-        /*
-            private void CargarAutomataFormatoNumeros(StreamReader reader)
-        {
-            estadoInicial = reader.ReadLine();
-            estadosFinales = new HashSet<string>(reader.ReadLine().Split(','));
-            transiciones = new Dictionary<Tuple<string, char>, string>();
-
-            string line;
-            while ((line = reader.ReadLine()) != null)
-            {
-                string[] parts = line.Split(',');
-                string estadoActual = parts[0];
-                char simbolo = parts[1][0];
-                string estadoSiguiente = parts[2];
-                transiciones[new Tuple<string, char>(estadoActual, simbolo)] = estadoSiguiente;
-            }
-        }
-
-        private void CargarAutomataFormatoCadenas(StreamReader reader)
-        {
-            estadoInicial = reader.ReadLine();
-            string estadoFinalLine = reader.ReadLine();
-            estadosFinales = new HashSet<string>(estadoFinalLine.Split(','));
-
-            transiciones = new Dictionary<Tuple<string, char>, string>();
-
-            string line;
-            while ((line = reader.ReadLine()) != null)
-            {
-                string[] parts = line.Split(',');
-                string estadoActual = parts[0];
-                char simbolo = parts[1][0];
-                string estadoSiguiente = parts[2];
-                transiciones[new Tuple<string, char>(estadoActual, simbolo)] = estadoSiguiente;
-            }
-        }
-
-        */
+      
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -183,7 +146,7 @@ namespace ProyectoLenguajes
                 estadoActual = estadoSiguiente;
             }
 
-            return estadosFinales.Contains(estadoActual); // Verifica si el estado actual es final
+            return estadosFinales.Contains(estadoActual); 
         }
 
       
