@@ -179,7 +179,7 @@ namespace ProyectoLenguajes
                 {
                     return false; // No existe transición para el símbolo en el estado actual
                 }
-                transicionesRealizadas.Add($"Estado actual: {estadoActual}, Símbolo leído: {simbolo}, Estado siguiente: {estadoSiguiente}");
+                transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
                 estadoActual = estadoSiguiente;
             }
 
