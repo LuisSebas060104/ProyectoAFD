@@ -51,7 +51,7 @@ namespace ProyectoLenguajes
                     RchMostrar.Text = content;
                     MessageBox.Show("Autómata cargado exitosamente.");
                     Txtcadena.Text = "";
-
+                    RchTransicion.Text = "";
 
                 }
             }
@@ -152,7 +152,9 @@ namespace ProyectoLenguajes
                 return;
             }
 
-            if (ValidarCadena(cadena))
+            List<string> transicionesRealizadas = new List<string>();
+
+            if (ValidarCadena(cadena, transicionesRealizadas))
             {
                 MessageBox.Show("La cadena es válida para el autómata.");
             }
@@ -160,12 +162,16 @@ namespace ProyectoLenguajes
             {
                 MessageBox.Show("La cadena NO es válida para el autómata.");
             }
+
+            RchTransicion.Text = string.Join(Environment.NewLine, transicionesRealizadas);
+            
         }
 
 
-        public bool ValidarCadena(string cadena)
+        public bool ValidarCadena(string cadena, List<string> transicionesRealizadas)
         {
             string estadoActual = estadoInicial;
+            transicionesRealizadas.Clear();
 
             foreach (char simbolo in cadena)
             {
@@ -173,11 +179,14 @@ namespace ProyectoLenguajes
                 {
                     return false; // No existe transición para el símbolo en el estado actual
                 }
+                transicionesRealizadas.Add($"Estado actual: {estadoActual}, Símbolo leído: {simbolo}, Estado siguiente: {estadoSiguiente}");
                 estadoActual = estadoSiguiente;
             }
 
             return estadosFinales.Contains(estadoActual); // Verifica si el estado actual es final
         }
+
+      
 
     }
 }

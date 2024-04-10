@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnAbrir = new System.Windows.Forms.Button();
             this.RchMostrar = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,6 +38,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.RchTransicion = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(396, 76);
+            this.label2.Location = new System.Drawing.Point(394, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 16);
             this.label2.TabIndex = 3;
@@ -81,14 +84,14 @@
             // 
             // Txtcadena
             // 
-            this.Txtcadena.Location = new System.Drawing.Point(399, 107);
+            this.Txtcadena.Location = new System.Drawing.Point(397, 97);
             this.Txtcadena.Name = "Txtcadena";
             this.Txtcadena.Size = new System.Drawing.Size(264, 20);
             this.Txtcadena.TabIndex = 4;
             // 
             // BtnValidarCadena
             // 
-            this.BtnValidarCadena.Location = new System.Drawing.Point(398, 133);
+            this.BtnValidarCadena.Location = new System.Drawing.Point(397, 123);
             this.BtnValidarCadena.Name = "BtnValidarCadena";
             this.BtnValidarCadena.Size = new System.Drawing.Size(111, 23);
             this.BtnValidarCadena.TabIndex = 5;
@@ -111,8 +114,11 @@
             // 
             this.panel1.BackgroundImage = global::ProyectoLenguajes.Properties.Resources.clouds_gradient_minimalist_desktop_wallpaper_preview;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.RchTransicion);
+            this.panel1.Controls.Add(this.Txtcadena);
             this.panel1.Controls.Add(this.BtnValidarCadena);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(2, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
@@ -121,11 +127,26 @@
             // 
             // RchTransicion
             // 
-            this.RchTransicion.Location = new System.Drawing.Point(398, 162);
+            this.RchTransicion.Location = new System.Drawing.Point(398, 190);
             this.RchTransicion.Name = "RchTransicion";
-            this.RchTransicion.Size = new System.Drawing.Size(252, 240);
+            this.RchTransicion.Size = new System.Drawing.Size(252, 212);
             this.RchTransicion.TabIndex = 6;
             this.RchTransicion.Text = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(394, 162);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(234, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Transiciones de la cadena ingresada:\r\n";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 
@@ -134,8 +155,6 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(779, 450);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Txtcadena);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RchMostrar);
             this.Controls.Add(this.BtnAbrir);
@@ -144,6 +163,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,6 +180,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox RchTransicion;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 
