@@ -42,8 +42,9 @@ namespace ProyectoLenguajes
                 {
                     // Obtiene la ruta del archivo seleccionado por el usuario
                     string filePath = openFileDialog.FileName;
+                    //Obtener nombre del archivo
+                    string fileName = openFileDialog.SafeFileName;
 
-                    
                     // Lee el contenido del archivo
                     string content = File.ReadAllText(filePath);
 
@@ -52,6 +53,7 @@ namespace ProyectoLenguajes
                     MessageBox.Show("Autómata cargado exitosamente.");
                     Txtcadena.Text = "";
                     RchTransicion.Text = "";
+                    label5.Text = fileName;
 
                 }
             }

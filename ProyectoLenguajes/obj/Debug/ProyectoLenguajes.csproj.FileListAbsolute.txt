@@ -40,3 +40,13 @@ C:\Users\paolo\Source\Repos\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLeng
 C:\Users\paolo\Source\Repos\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.CoreCompileInputs.cache
 C:\Users\paolo\Source\Repos\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.exe
 C:\Users\paolo\Source\Repos\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.pdb
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.exe.config
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.exe
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.pdb
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.AssemblyReference.cache
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Form1.resources
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Properties.Resources.resources
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.GenerateResource.cache
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.CoreCompileInputs.cache
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.exe
+C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.pdb
