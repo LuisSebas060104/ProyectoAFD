@@ -122,9 +122,9 @@ namespace ProyectoLenguajes
 
             
 
-            List<string> transicionesRealizadas = new List<string>();
+            List<string> transicionesDeValidacion = new List<string>();
 
-            if (ValidarCadena(cadena, transicionesRealizadas))
+            if (ValidarCadena(cadena, transicionesDeValidacion))
             {
                 MessageBox.Show("La cadena es válida para el autómata.");
             }
@@ -133,7 +133,7 @@ namespace ProyectoLenguajes
                 MessageBox.Show("La cadena NO es válida para el autómata.");
             }
 
-            RchTransicion.Text = string.Join(Environment.NewLine, transicionesRealizadas);
+            RchTransicion.Text = string.Join(Environment.NewLine, transicionesDeValidacion);
             
         }
 
@@ -144,7 +144,7 @@ namespace ProyectoLenguajes
         }
 
 
-        public bool ValidarCadena(string cadena, List<string> transicionesRealizadas)
+        public bool ValidarCadena(string cadena, List<string> transicionesDeValidacion)
         {
 
             // Eliminar los espacios de la cadena antes de validarla.
@@ -152,7 +152,7 @@ namespace ProyectoLenguajes
 
 
             string estadoActual = estadoInicial;
-            transicionesRealizadas.Clear();
+            transicionesDeValidacion.Clear();
 
             foreach (char simbolo in cadena)
             {
@@ -160,7 +160,7 @@ namespace ProyectoLenguajes
                 {
                     return false; 
                 }
-                transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
+                transicionesDeValidacion.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
                 estadoActual = estadoSiguiente;
             }
 
