@@ -21,7 +21,7 @@ namespace ProyectoLenguajes
         //Coleccion de cadenas de texto (Estados finales)
         private HashSet<string> estadosFinales;
         //Diccionario que almacena todas las transiciones del automata, utiliza una tupla de la forma (string, char)
-        private Dictionary<Tuple<string, char>, string> transiciones;
+        private Dictionary<Tuple<string, char>, HashSet<string>> transiciones;
 
         public Form1()
         {
@@ -84,7 +84,7 @@ namespace ProyectoLenguajes
                 //Se agregan los estados finales en un hash
                 estadosFinales = new HashSet<string>(reader.ReadLine().Split(',').Select(s => s.Trim()));
                 //Se coloca en el diccionario las transiciones
-                transiciones = new Dictionary<Tuple<string, char>, string>();
+               transiciones = new Dictionary<Tuple<string, char>, HashSet<string>>();
 
                 string line;
                 //Se ejecuta mientras haya mas lineas en el archivo. Lee cada línea del archivo una por una.
@@ -100,7 +100,13 @@ namespace ProyectoLenguajes
                     string estadoSiguiente = parts[2].Trim();
                     //Entrada a diccionario, esta es una tupla que contiene el estado actual y el símbolo, y el valor es el estado siguiente
                     //Esto representa una transición en el autómata.
-                    transiciones[new Tuple<string, char>(estadoActual, simbolo)] = estadoSiguiente;
+                    var key = new Tuple<string, char>(estadoActual, simbolo);
+                    if (!transiciones.ContainsKey(key))
+                    {
+                        transiciones[key] = new HashSet<string>();
+                    }
+                    transiciones[key].Add(estadoSiguiente);
+
                 }
             }
         }
@@ -120,30 +126,36 @@ namespace ProyectoLenguajes
         {
 
             // Eliminar los espacios de la cadena antes de validarla.
-            cadena = TrimString(Txtcadena.Text);
-
+            cadena = cadena.Trim();
 
             string estadoActual = estadoInicial;
             transicionesDeValidacion.Clear();
 
             foreach (char simbolo in cadena)
             {
-                //Verifica si existe una transición válida desde el estado actual con el símbolo actual, 
-                //utiliza el método TryGetValue del diccionario transiciones para intentar obtener el estado siguiente asociado con la tupla de estado actual y símbolo actual.
-
-                if (!transiciones.TryGetValue(new Tuple<string, char>(estadoActual, simbolo), out string estadoSiguiente))
+                // Verifica si existe una transición válida desde el estado actual con el símbolo actual
+                var key = new Tuple<string, char>(estadoActual, simbolo);
+                if (!transiciones.TryGetValue(key, out HashSet<string> estadosSiguientes))
                 {
-                    //Si no hay una transicion definidia para el estado y simbolo actual, entonces devolvera falso
+                    // Si no hay una transición definida para el estado y símbolo actual, entonces devolverá falso
                     return false;
                 }
-                //Agrega las transiciones que va a tener el autonama, y esas transicions se mandan por medio de la lista transicionesDeValidacion
-                //Al richTextBox para que puedan aparecer todas las transiciones de manera escrita y ordenada
-                transicionesDeValidacion.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
-                //Mueve el autómata al siguiente estado basado en la transición.
-                estadoActual = estadoSiguiente;
+
+                // Agrega las transiciones que va a tener el autómata, y esas transiciones se mandan 
+                // por medio de la lista transicionesDeValidacion al RichTextBox para que puedan aparecer 
+                // todas las transiciones de manera escrita y ordenada
+                foreach (string estadoSiguiente in estadosSiguientes)
+                {
+                    transicionesDeValidacion.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
+                }
+
+                // Mueve el autómata a los siguientes estados basados en las transiciones
+                // Esto puede implicar múltiples transiciones para un mismo símbolo
+                estadoActual = string.Join(",", estadosSiguientes);
             }
-            //Verifica si el estado en el que finalizo el recorrido es un estado final
-            return estadosFinales.Contains(estadoActual);
+
+            // Verifica si alguno de los estados en los que finalizó el recorrido es un estado final
+            return estadoActual.Split(',').Any(est => estadosFinales.Contains(est));
         }
 
 
@@ -205,6 +217,141 @@ namespace ProyectoLenguajes
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnAbrirN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    RchMostrarN.Text = File.ReadAllText(filePath);
+                    TxtCadenaN.Text = "";
+
+                    MessageBox.Show("Archivo cargado exitosamente.");
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Error al leer el archivo: " + ex.Message);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("No tienes permiso para acceder al archivo.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error inesperado: " + ex.Message);
+            }
+
+    }
+    private void CargarAFNDesdeArchivo(string filePath)
+        {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                numeroEstados = int.Parse(reader.ReadLine());
+                estadoInicial = reader.ReadLine();
+                estadosFinales = new HashSet<string>(reader.ReadLine().Split(','));
+                transiciones = new Dictionary<Tuple<string, char>, HashSet<string>>();
+                transiciones = new Dictionary<Tuple<string, char>, HashSet<string>>();
+
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(',');
+                    string estadoActual = parts[0];
+                    char simbolo = parts[1][0];
+                    string estadoSiguiente = parts[2];
+
+                    // Agregar la transición al diccionario
+                    var key = new Tuple<string, char>(estadoActual, simbolo);
+                    if (!transiciones.ContainsKey(key))
+                    {
+                        transiciones[key] = new HashSet<string>();
+                    }
+                    transiciones[key].Add(estadoSiguiente);
+                }
+            }
+        }
+
+        private void BtnValidarN_Click(object sender, EventArgs e)
+        {
+            if (numeroEstados == 0)
+            {
+                MessageBox.Show("Primero carga un autómata antes de validar una cadena.");
+                return;
+            }
+
+            string cadena = TxtCadenaN.Text.Trim();
+            if (string.IsNullOrEmpty(cadena))
+            {
+                MessageBox.Show("Ingresa una cadena para validar.");
+                return;
+            }
+
+            List<string> transicionesRealizadas = new List<string>();
+
+            if (ValidarCadenaAFN(cadena, transicionesRealizadas))
+            {
+                MessageBox.Show("La cadena es válida para el autómata.");
+            }
+            else
+            {
+                MessageBox.Show("La cadena NO es válida para el autómata.");
+            }
+
+            MostrarTransicionesEnRichTextBox(transicionesRealizadas);
+        }
+
+
+        private bool ValidarCadenaAFN(string cadena, List<string> transicionesRealizadas)
+        {
+            cadena = cadena.Trim();
+
+            string estadoActual = estadoInicial;
+            transicionesRealizadas.Clear();
+
+            foreach (char simbolo in cadena)
+            {
+                var key = new Tuple<string, char>(estadoActual, simbolo);
+                if (!transiciones.TryGetValue(key, out HashSet<string> estadosSiguientes))
+                {
+                    return false;
+                }
+
+                foreach (string estadoSiguiente in estadosSiguientes)
+                {
+                    transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
+                }
+
+                estadoActual = string.Join(",", estadosSiguientes);
+            }
+
+            return estadoActual.Split(',').Any(est => estadosFinales.Contains(est));
+        }
+
+        private void MostrarTransicionesEnRichTextBox(List<string> transicionesRealizadas)
+        {
+            List<string> transicionesMostrar = new List<string>();
+
+            foreach (var kvp in transiciones)
+            {
+                string estadoActual = kvp.Key.Item1;
+                char simbolo = kvp.Key.Item2;
+                HashSet<string> estadosSiguientes = kvp.Value;
+
+                foreach (string estadoSiguiente in estadosSiguientes)
+                {
+                    transicionesMostrar.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
+                }
+            }
+
+            RchMostrarN.Text = string.Join(Environment.NewLine, transicionesMostrar);
         }
     }
 }
