@@ -230,10 +230,15 @@ namespace ProyectoLenguajes
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    RchMostrarN.Text = File.ReadAllText(filePath);
+                    string content = File.ReadAllText(filePath);
+
+                    
+                    RchMostrarN.Text = content;
                     TxtCadenaN.Text = "";
 
-                    MessageBox.Show("Archivo cargado exitosamente.");
+
+                    CargarAFNDesdeArchivo(filePath); // Cargar el autómata desde el archivo
+                    MessageBox.Show("Autómata cargado exitosamente.");
                 }
             }
             catch (IOException ex)
@@ -249,7 +254,7 @@ namespace ProyectoLenguajes
                 MessageBox.Show("Error inesperado: " + ex.Message);
             }
 
-    }
+        }
     private void CargarAFNDesdeArchivo(string filePath)
         {
             using (StreamReader reader = new StreamReader(filePath))
@@ -257,7 +262,6 @@ namespace ProyectoLenguajes
                 numeroEstados = int.Parse(reader.ReadLine());
                 estadoInicial = reader.ReadLine();
                 estadosFinales = new HashSet<string>(reader.ReadLine().Split(','));
-                transiciones = new Dictionary<Tuple<string, char>, HashSet<string>>();
                 transiciones = new Dictionary<Tuple<string, char>, HashSet<string>>();
 
                 string line;
@@ -268,7 +272,6 @@ namespace ProyectoLenguajes
                     char simbolo = parts[1][0];
                     string estadoSiguiente = parts[2];
 
-                    // Agregar la transición al diccionario
                     var key = new Tuple<string, char>(estadoActual, simbolo);
                     if (!transiciones.ContainsKey(key))
                     {
@@ -296,7 +299,7 @@ namespace ProyectoLenguajes
 
             List<string> transicionesRealizadas = new List<string>();
 
-            if (ValidarCadenaAFN(cadena, transicionesRealizadas))
+            if (ValidarCadenaAFN(cadena, estadoInicial, transicionesRealizadas))
             {
                 MessageBox.Show("La cadena es válida para el autómata.");
             }
@@ -309,30 +312,32 @@ namespace ProyectoLenguajes
         }
 
 
-        private bool ValidarCadenaAFN(string cadena, List<string> transicionesRealizadas)
+        private bool ValidarCadenaAFN(string cadena, string estadoActual, List<string> transicionesRealizadas)
         {
-            cadena = cadena.Trim();
-
-            string estadoActual = estadoInicial;
-            transicionesRealizadas.Clear();
-
-            foreach (char simbolo in cadena)
+            if (cadena.Length == 0)
             {
-                var key = new Tuple<string, char>(estadoActual, simbolo);
-                if (!transiciones.TryGetValue(key, out HashSet<string> estadosSiguientes))
-                {
-                    return false;
-                }
-
-                foreach (string estadoSiguiente in estadosSiguientes)
-                {
-                    transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
-                }
-
-                estadoActual = string.Join(",", estadosSiguientes);
+                return estadosFinales.Contains(estadoActual);
             }
 
-            return estadoActual.Split(',').Any(est => estadosFinales.Contains(est));
+            char simbolo = cadena[0];
+
+            var key = new Tuple<string, char>(estadoActual, simbolo);
+            if (!transiciones.TryGetValue(key, out HashSet<string> estadosSiguientes))
+            {
+                return false;
+            }
+
+            foreach (string estadoSiguiente in estadosSiguientes)
+            {
+                transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
+                if (ValidarCadenaAFN(cadena.Substring(1), estadoSiguiente, transicionesRealizadas))
+                {
+                    return true;
+                }
+                transicionesRealizadas.RemoveAt(transicionesRealizadas.Count - 1);
+            }
+
+            return false;
         }
 
         private void MostrarTransicionesEnRichTextBox(List<string> transicionesRealizadas)
