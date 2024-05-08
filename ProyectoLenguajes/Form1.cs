@@ -223,7 +223,7 @@ namespace ProyectoLenguajes
 
 
 
-        //AFN
+        //FASE AFN
 
 
 
@@ -348,6 +348,7 @@ namespace ProyectoLenguajes
             }
 
             char simbolo = cadena[0];
+            bool cadenaValida = false;
 
             // Buscar todas las posibles transiciones desde el estado actual con el símbolo actual
             foreach (var kvp in transiciones)
@@ -362,20 +363,23 @@ namespace ProyectoLenguajes
                     foreach (string estadoSiguiente in estadosSiguientes)
                     {
                         transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
-                        if (ValidarCadenaAFN(cadena.Substring(1), estadoSiguiente, transicionesRealizadas))
+
+                        // Validar recursivamente con el resto de la cadena
+                        cadenaValida = ValidarCadenaAFN(cadena.Substring(1), estadoSiguiente, transicionesRealizadas);
+
+                        if (cadenaValida)
                         {
                             return true; // La cadena es válida
                         }
-                        transicionesRealizadas.RemoveAt(transicionesRealizadas.Count - 1); // Deshacer la transición
+
+                        // Si la cadena no es válida, deshacer la última transición
+                        transicionesRealizadas.RemoveAt(transicionesRealizadas.Count - 1);
                     }
                 }
             }
 
-            return false; // Ninguna transición válida para el estado actual y el símbolo actual
+            return cadenaValida; // Devolver el resultado de la validación
         }
-
-       
-
 
     }
 }
