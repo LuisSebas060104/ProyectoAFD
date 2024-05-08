@@ -219,6 +219,17 @@ namespace ProyectoLenguajes
 
         }
 
+
+
+
+
+        //AFN
+
+
+
+
+
+
         private void BtnAbrirN_Click(object sender, EventArgs e)
         {
             try
@@ -262,6 +273,7 @@ namespace ProyectoLenguajes
                 numeroEstados = int.Parse(reader.ReadLine());
                 estadoInicial = reader.ReadLine();
                 estadosFinales = new HashSet<string>(reader.ReadLine().Split(','));
+
                 transiciones = new Dictionary<Tuple<string, char>, HashSet<string>>();
 
                 string line;
@@ -302,63 +314,71 @@ namespace ProyectoLenguajes
             if (ValidarCadenaAFN(cadena, estadoInicial, transicionesRealizadas))
             {
                 MessageBox.Show("La cadena es válida para el autómata.");
+                MostrarTransicionesEnRichTextBox(transicionesRealizadas);
+
             }
             else
             {
                 MessageBox.Show("La cadena NO es válida para el autómata.");
+                MostrarTransicionesEnRichTextBox(transicionesRealizadas);
+
             }
 
-            MostrarTransicionesEnRichTextBox(transicionesRealizadas);
+
         }
 
+        private void MostrarTransicionesEnRichTextBox(List<string> transicionesRealizadas)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (string transicion in transicionesRealizadas)
+            {
+                sb.AppendLine(transicion); // Agregar cada transición en una nueva línea
+            }
+
+            RchValidarN.Text = sb.ToString(); // Mostrar todas las transiciones en el RichTextBox
+        }
 
         private bool ValidarCadenaAFN(string cadena, string estadoActual, List<string> transicionesRealizadas)
         {
             if (cadena.Length == 0)
             {
+                // Verificar si el estado actual es final
                 return estadosFinales.Contains(estadoActual);
             }
 
             char simbolo = cadena[0];
 
-            var key = new Tuple<string, char>(estadoActual, simbolo);
-            if (!transiciones.TryGetValue(key, out HashSet<string> estadosSiguientes))
-            {
-                return false;
-            }
-
-            foreach (string estadoSiguiente in estadosSiguientes)
-            {
-                transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
-                if (ValidarCadenaAFN(cadena.Substring(1), estadoSiguiente, transicionesRealizadas))
-                {
-                    return true;
-                }
-                transicionesRealizadas.RemoveAt(transicionesRealizadas.Count - 1);
-            }
-
-            return false;
-        }
-
-        private void MostrarTransicionesEnRichTextBox(List<string> transicionesRealizadas)
-        {
-            List<string> transicionesMostrar = new List<string>();
-
+            // Buscar todas las posibles transiciones desde el estado actual con el símbolo actual
             foreach (var kvp in transiciones)
             {
-                string estadoActual = kvp.Key.Item1;
-                char simbolo = kvp.Key.Item2;
+                string estadoOrigen = kvp.Key.Item1;
+                char simboloTransicion = kvp.Key.Item2;
                 HashSet<string> estadosSiguientes = kvp.Value;
 
-                foreach (string estadoSiguiente in estadosSiguientes)
+                if (estadoOrigen == estadoActual && simboloTransicion == simbolo)
                 {
-                    transicionesMostrar.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
+                    // Realizar la transición
+                    foreach (string estadoSiguiente in estadosSiguientes)
+                    {
+                        transicionesRealizadas.Add($"{estadoActual},{simbolo},{estadoSiguiente}");
+                        if (ValidarCadenaAFN(cadena.Substring(1), estadoSiguiente, transicionesRealizadas))
+                        {
+                            return true; // La cadena es válida
+                        }
+                        transicionesRealizadas.RemoveAt(transicionesRealizadas.Count - 1); // Deshacer la transición
+                    }
                 }
             }
 
-            RchMostrarN.Text = string.Join(Environment.NewLine, transicionesMostrar);
+            return false; // Ninguna transición válida para el estado actual y el símbolo actual
         }
+
+       
+
+
     }
 }
+
   
 

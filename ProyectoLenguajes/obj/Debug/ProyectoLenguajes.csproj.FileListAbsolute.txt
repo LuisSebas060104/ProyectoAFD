@@ -51,3 +51,14 @@ C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\Proy
 C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.exe
 C:\Users\usuario\source\repos\ProyectoAFD\PLFA3\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.pdb
 D:\Desktop\ProyectoAFD\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Form2.resources
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.exe.config
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.exe
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.pdb
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.AssemblyReference.cache
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Form1.resources
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Form2.resources
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Properties.Resources.resources
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.GenerateResource.cache
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.CoreCompileInputs.cache
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.exe
+C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.pdb
