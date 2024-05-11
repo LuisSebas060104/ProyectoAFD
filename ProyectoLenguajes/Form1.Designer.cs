@@ -44,6 +44,7 @@
             this.BtnValidarCadena = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
             this.TxtCadenaN = new System.Windows.Forms.TextBox();
             this.BtnValidarN = new System.Windows.Forms.Button();
             this.RchValidarN = new System.Windows.Forms.RichTextBox();
@@ -53,7 +54,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -236,6 +237,15 @@
             this.tabPage2.Text = "AFN";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(496, 194);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(163, 16);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Recorrido Cadena Valida:";
+            // 
             // TxtCadenaN
             // 
             this.TxtCadenaN.Location = new System.Drawing.Point(496, 114);
@@ -329,21 +339,23 @@
             this.label6.Text = "Automatas Finitos no deterministas\r\n\r\n";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // label10
+            // button1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(496, 194);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(170, 17);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Recorrido Cadena Valida:";
+            this.button1.Location = new System.Drawing.Point(973, 546);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(71, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Cerrar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1039, 554);
+            this.ClientSize = new System.Drawing.Size(1056, 578);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
@@ -386,6 +398,7 @@
         private System.Windows.Forms.TextBox TxtCadenaN;
         private System.Windows.Forms.Button BtnValidarN;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
     }
 }
 

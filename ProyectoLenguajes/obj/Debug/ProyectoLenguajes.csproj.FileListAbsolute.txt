@@ -62,3 +62,15 @@ C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\P
 C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.CoreCompileInputs.cache
 C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.exe
 C:\Users\usuario\OneDrive - Universidad Rafael Landivar\Escritorio\PROYECTOAFN\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.pdb
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.AssemblyReference.cache
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.SuggestedBindingRedirects.cache
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Form1.resources
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Form2.resources
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.Properties.Resources.resources
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.GenerateResource.cache
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.csproj.CoreCompileInputs.cache
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.exe
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\obj\Debug\ProyectoLenguajes.pdb
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.exe.config
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.exe
+C:\Users\paolo\Downloads\Proyecto Lenguajes Fase IV\ProyectoLenguajes\bin\Debug\ProyectoLenguajes.pdb
